@@ -1,5 +1,5 @@
 import 'package:gsheets/gsheets.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shop_project/models/shop_list.dart';
 
 Future<Product> getItem(
@@ -8,8 +8,8 @@ Future<Product> getItem(
   return Product(
     name: row[1],
     image: row[1] == '18 plus'
-        ? Image.asset('assets/images/18.png', width: 70, height: 70)
-        : Image.asset('assets/images/pen.png', width: 70, height: 70),
+        ? (await rootBundle.load('assets/images/18.png')).buffer.asUint8List()
+        : (await rootBundle.load('assets/images/pen.png')).buffer.asUint8List(),
     price: row[3],
     numProduct: int.parse(row[2]),
   );

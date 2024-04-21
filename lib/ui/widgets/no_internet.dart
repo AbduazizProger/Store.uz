@@ -15,7 +15,7 @@ class NoInternet extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Please turn on internet and reopen the app',
+            "Iltimos internetingizni yoqing va dasturni yopib-oching !",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.w600,

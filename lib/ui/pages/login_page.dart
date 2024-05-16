@@ -9,7 +9,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('------------------------');
     final userController = TextEditingController();
     final pswController = TextEditingController();
     return Scaffold(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:latin_crillic/latin_crillic.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_project/models/language_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguagePage extends StatelessWidget {
   const LanguagePage({super.key});

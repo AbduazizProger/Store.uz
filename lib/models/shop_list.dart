@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_project/functions/add_zeros.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shop_project/functions/requests/buy_products.dart';
 
 class ShopList extends ChangeNotifier {
   Map<String, Product> productMap = {};
@@ -10,8 +11,9 @@ class ShopList extends ChangeNotifier {
   void firstAdd() async {
     productMap['1234567654213456'] = Product(
       name: 'Pen',
-      image:
-          (await rootBundle.load('assets/images/pen.png')).buffer.asUint8List(),
+      image: (await rootBundle.load('assets/images/product.jpg'))
+          .buffer
+          .asUint8List(),
       price: '1500',
       numProduct: 150,
     );
@@ -19,7 +21,7 @@ class ShopList extends ChangeNotifier {
   }
 
   ShopList() {
-    firstAdd();
+    // firstAdd();
   }
 
   void addProduct(String code, Product product) {
@@ -37,6 +39,14 @@ class ShopList extends ChangeNotifier {
   }
 
   void buyAll(SharedPreferences prefs) {
+    final numbers = productMap.map(
+      (key, value) => MapEntry(key, value.numOrdered),
+    );
+    buy(
+      productMap.keys.toList(),
+      prefs.getString('user-psw')!.split(';')[0],
+      numbers.values.toList(),
+    );
     final date = DateTime.now();
     List<String> buying = [
       """"${addZeros('${date.day}.${date.month}.${date.year}', false)}__${addZeros('${date.hour}:${date.minute}', true)}__${(prefs.getStringList('history') ?? []).length}" """,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:latin_crillic/latin_crillic.dart';
 import 'package:shop_project/models/language_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_project/ui/widgets/profile_component.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prefs = context.read<SharedPreferences>();
     return Consumer<LanguageModel>(builder: (context, language, widget) {
       return Column(
         children: [
@@ -24,18 +26,29 @@ class ProfilePage extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.account_circle,
-                        color: Colors.grey, size: 73),
+                    const Icon(
+                      Icons.account_circle,
+                      color: Colors.grey,
+                      size: 73,
+                    ),
                     const SizedBox(width: 7),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           language.selected == 0
-                              ? 'Login qilinmagan'
-                              : LatinCrillic.toCrillic('Login qilinmagan'),
+                              ? prefs.getString('user-psw')!.split(';')[0]
+                              : LatinCrillic.toCrillic(
+                                  prefs.getString('user-psw') != null
+                                      ? prefs
+                                          .getString('user-psw')!
+                                          .split(';')[0]
+                                      : 'Login qilinmagan',
+                                ),
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Text(
                           language.selected == 0

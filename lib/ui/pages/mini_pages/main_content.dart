@@ -9,12 +9,9 @@ class MainContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: List.generate(
-        basket.productMap.length,
-        (index) => SaleItem(index: index, basket: basket),
-      ),
+    return ListView.builder(
+      itemCount: basket.productMap.length,
+      itemBuilder: (context, index) => SaleItem(index: index, basket: basket),
     );
   }
 }

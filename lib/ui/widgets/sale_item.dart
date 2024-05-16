@@ -25,10 +25,13 @@ class SaleItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              Image.memory(
-                basket.productMap.values.elementAt(index).image,
-                width: 70,
-                height: 70,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.memory(
+                  basket.productMap.values.elementAt(index).image,
+                  width: 70,
+                  height: 70,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10),

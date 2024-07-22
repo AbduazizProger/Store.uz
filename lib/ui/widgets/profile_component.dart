@@ -6,6 +6,7 @@ import 'package:latin_crillic/latin_crillic.dart';
 import 'package:shop_project/models/language_model.dart';
 import 'package:shop_project/ui/pages/about_page.dart';
 import 'package:shop_project/ui/pages/language_page.dart';
+import 'package:shop_project/ui/pages/wallet_page.dart';
 
 class ProfileComponent extends StatelessWidget {
   const ProfileComponent({
@@ -80,6 +81,10 @@ class ProfileComponent extends StatelessWidget {
               );
             },
           );
+        } else if (name == 'Hamyon') {
+          Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
+            return const WalletPage();
+          }));
         } else if (name == 'Biz haqimizda') {
           Navigator.of(context).push(CupertinoPageRoute(builder: (context) {
             return const AboutPage();

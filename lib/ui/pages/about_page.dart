@@ -9,7 +9,8 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final language = context.read<LanguageModel>();
-    const about = """""";
+    const about =
+        """Bizning jamoamiz Turin politexnika universiteti talabalaridan tashkil topgan. Biz mijozlarimiz uchun innovatsion va samarali echimlarni yaratish uchun dasturlash, dizayn va marketing bo'yicha mutaxassislarni birlashtiramiz. Bizning maqsadimiz korxonalarga o'z faoliyatini optimallashtirish, mijozlarga xizmat ko'rsatishni yaxshilash va daromadni oshirishga yordam berishdir. Biz o'z ishimiz bilan faxrlanamiz va o'z sohamizda eng yaxshi bo'lish va mijozlarimizga faqat eng yaxshi natijalarni taqdim etish uchun doimo takomillashtirishga intilamiz.""";
     return Scaffold(
       appBar: AppBar(
         title: Text(
